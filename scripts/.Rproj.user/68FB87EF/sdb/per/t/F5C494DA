@@ -1,0 +1,16 @@
+{
+    "contents" : "##install.packages('seqinr')\nrequire('seqinr')\nolyv3<-read.fasta(file='C:/Users/Jake H/Documents/FASTA/Olurida_transcriptome_v3.fasta', seqtype=\"DNA\",as.string=T,\n                  set.attributes=F)\ntargetlist<-read.csv(\"C:/Users/Jake H/Documents/GitHub/Resilience-Project/short-list-olyo-v3.csv\", header=F)\nolyv3[c(which(names(olyv3) %in% targetlist$V1))]\n\n\nlist<-olyv3[c(which(names(olyv3) %in% c(\"comp44273_c0_seq2\",\"comp44273_c0_seq4\",\"comp44273_c0_seq3\",\"comp37549_c0_seq2\")))]\n\nlist2\n\nlist2<-olyv3[c(which(names(olyv3) %in% \"comp30443_c0_seq2\"))]\n\nnames(olyv3)\nhead (olyv3)\n",
+    "created" : 1437506733538.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3326844853",
+    "id" : "F5C494DA",
+    "lastKnownWriteTime" : 1433983998,
+    "path" : "~/R/qPCR/seqinrnotebook.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

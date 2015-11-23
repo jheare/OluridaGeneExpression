@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1438275726366.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "F2DF0531",
+    "lastKnownWriteTime" : 13229740524830817,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "ef1drep2",
+        "contentUrl" : "content?title=ef1drep2&file=aa7869edd64340439763b36a33b7793e.htm",
+        "displayedObservations" : "48",
+        "displayedVariables" : 36,
+        "totalObservations" : "48",
+        "variables" : "39"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

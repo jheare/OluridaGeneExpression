@@ -1,0 +1,17 @@
+{
+    "contents" : "require(plyr)\n\nrep1<-read.csv(\"TLRrep1res2.csv\", header=T)\nrep1<-rep1[1:52,]\nrep1<-rep1[which(rep1$Names!=c(\"NT_C_1\")),]\nrep1<-rep1[which(rep1$Names!=c(\"NT_C_3\")),]\nrep1<-rep1[which(rep1$Names!=c(\"NT_C_2\")),]\nrep1<-rep1[which(rep1$Names!=c(\"NT_C_4\")),]\n\nrep2<-read.csv(\"TLRrep2res2.csv\", header=T)\nrep2<-rep2[1:52,]\nrep2<-rep2[which(rep2$Names!=c(\"NT_C_1\")),]\nrep2<-rep2[which(rep2$Names!=c(\"NT_C_2\")),]\nrep2<-rep2[which(rep2$Names!=c(\"NT_C_3\")),]\nrep2<-rep2[which(rep2$Names!=c(\"NT_C_4\")),]\n\n\n\nCtavg<-as.data.frame(cbind(as.character(p29INGct$Names),\n                        as.numeric(as.character(rep1$sig.eff)),\n                        as.numeric(as.character(rep1$sig.cpD2)),\n                        as.numeric(as.character(rep2$sig.eff)),\n                        as.numeric(as.character(rep2$sig.cpD2))))\n\n\nCtavg<-rename(Ctavg, c(\"V1\"=\"Name\",\"V2\"=\"rep1.eff\",\"V3\"=\"rep1.ct\",\"V4\"=\"rep2.eff\"\n                   ,\"V5\"= \"rep2.ct\"))\n\nCtavg$rep1.ct<-as.numeric(as.character(Ctavg$rep1.ct))\nCtavg$rep2.ct<-as.numeric(as.character(Ctavg$rep2.ct))\n\n\n\nCtavg$rep1.ct[is.na(Ctavg$rep1.ct)]<-40\nCtavg$rep2.ct[is.na(Ctavg$rep2.ct)]<-40\n\n\n\nCtavg$repdiff<-Ctavg$rep1.ct-Ctavg$rep2.ct\n\nopcor<-mean(Ctavg$repdiff)\n\nCtavg$opticorr<-Ctavg$rep2.ct + opcor\n\nCtavg$avgct<-(Ctavg$rep1.ct+Ctavg$rep2.ct)/2\n\nCtavg$norm<-abs(Ctavg$avgct-efnorm$avgct)\n\n\nCtavg$log<-log(Ctavg$norm)\n\nTLRsum<-Ctavg\n\nshapiro.test(p29INGavg$log)\n\nggplot(p29INGavg, aes(x=Name,y=log, fill=Pop))+geom_bar(stat=\"identity\")\nggplot(p29INGavg, aes(x=Treat, y=log, fill=Pop))+geom_boxplot()\n\n\nfit<-friedman.test(log~Pop+Treat+Pop:Treat,data=p29INGavg)\nfit\nTukeyHSD(fit)\n\nfit2<-posthoc.kruskal.nemenyi.test(log~Pop, data=p29INGavg[which(p29INGavg$Treat==\"C\"),],\n                                   dist=\"Tukey\", p.adjust.method='Bonferroni')\nfit2\n\nfit3<-posthoc.kruskal.nemenyi.test(log~Pop, data=p29INGavg[which(p29INGavg$Treat==\"T\"),],\n                                   dist=\"Tukey\",p.adjust.method='Bonferroni')\n\nfit3\n\n\nfit4<-wilcox.test(log~Treat, data=p29INGavg[which(p29INGavg$Pop==\"H\"),])\nfit4\n\nfit5<-wilcox.test(log~Treat, data=p29INGavg[which(p29INGavg$Pop==\"N\"),])\nfit5\n\nfit6<-wilcox.test(log~Treat, data=p29INGavg[which(p29INGavg$Pop==\"S\"),])\nfit6\n\nActTLRct<-merge(Actinsum,TLRsum, by=\"Name\", suffixes=c(\".Actin\",\".TLR\"))\n\nAllct2<-merge(Allct2,ActTLRct, by=\"Name\", suffixes=c(\".CRAF\",\".Actin\"))\n\nwrite.csv(Allct2,file=\"Ctvalues.csv\",col.names=T,row.names=T)\n\nopcor<-mean(Ctavg$repdiff)\n\nCtavg$opticorr<-Ctavg$rep2.ct + opcor\n\nrep3<-read.csv(\"Actin4ct.csv\", header=T)\nrep3<-rep3[1:52,]\nrep3<-rep3[which(rep3$Names!=c(\"NT_C_1\")),]\nrep3<-rep3[which(rep3$Names!=c(\"NT_C_2\")),]\nrep3<-rep3[which(rep3$Names!=c(\"NT_C_3\")),]\nrep3<-rep3[which(rep3$Names!=c(\"NT_C_4\")),]\n\nCtavg$rep3.ct<-as.numeric(as.character(Ctavg$rep3.ct))\n\nCtavg$rep3.ct[is.na(Ctavg$rep3.ct)]<-40\n",
+    "created" : 1438622385459.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "3593374692",
+    "id" : "9151E56",
+    "lastKnownWriteTime" : 32370056118796380,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

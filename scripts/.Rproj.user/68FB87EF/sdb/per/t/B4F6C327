@@ -1,0 +1,17 @@
+{
+    "contents" : "require(qpcR)\nrequire(plyr)\nrequire(ggplot2)\nrequire(splitstackshape)\nrequire(outliers)\n\nrep2<-read.csv(\"GABABRrawfluoro.csv\", header = T)\nrep2$X<-NULL\nrep2<-rename(rep2, c(\"Cycle\" = \"Cycles\", \"A1\" = \"H_C_1\", \"A2\" = \"N_C_1\",\n                     \"A3\"= \"S_C_1\", \"A4\"=\"H_T_1\", \"A5\"=\"N_T_1\",\"A6\"=\"S_T_1\",\n                     \"A7\"=\"NT_C_1\",\"B1\" = \"H_C_2\", \"B2\" = \"N_C_2\",\"B3\"= \"S_C_2\",\n                     \"B4\"=\"H_T_2\", \"B5\"=\"N_T_2\", \"B6\"=\"S_T_2\",\"B7\"=\"NT_C_2\",\n                     \"C1\" = \"H_C_3\", \"C2\" = \"N_C_3\",\"C3\"= \"S_C_3\",\"C4\"=\"H_T_3\",\n                     \"C5\"=\"N_T_3\", \"C6\"=\"S_T_3\", \"C7\"=\"NT_C_3\",\"D1\" = \"H_C_4\",\n                     \"D2\" = \"N_C_4\",\"D3\"= \"S_C_4\", \"D4\"=\"H_T_4\", \"D5\"=\"N_T_4\",\n                     \"D6\"=\"S_T_4\", \"D7\"=\"NT_C_4\",\"E1\" = \"H_C_5\", \"E2\" = \"N_C_5\",\n                     \"E3\"= \"S_C_5\", \"E4\"=\"H_T_5\", \"E5\"=\"N_T_5\", \"E6\"=\"S_T_5\",\n                     \"F1\" = \"H_C_6\", \"F2\" = \"N_C_6\",\"F3\"= \"S_C_6\", \"F4\"=\"H_T_6\",\n                     \"F5\"=\"N_T_6\", \"F6\"=\"S_T_6\",\"G1\" = \"H_C_7\", \"G2\" = \"N_C_7\",\n                     \"G3\"= \"S_C_7\", \"G4\"=\"H_T_7\", \"G5\"=\"N_T_7\", \"G6\"=\"S_T_7\",\n                     \"H1\" = \"H_C_8\", \"H2\" = \"N_C_8\",\"H3\"= \"S_C_8\", \"H4\"=\"H_T_8\",\n                     \"H5\"=\"N_T_8\", \"H6\"=\"S_T_8\"))\n\nrep2ct<-pcrbatch(rep2, fluo=NULL, type = \"cpD2\")\n\n\nrep2res<-setNames(data.frame(t(rep2ct)),rep2ct[,1])\nrep2res<-rep2res[-1,]\n\nrep2res$Names<-rownames(rep2res)\nrep3<-rep2res\n\nrep2res2<-cSplit_f(rep2res, splitCols=c(\"Names\"), sep=\"_\", drop = F)\n\n\nrep2res2<-rename(rep2res2, c(\"Names_1\"=\"Pop\", \"Names_2\"=\"Treat\", \"Names_3\"=\"Sample\"))\n\nrep2res2$Gene<-rep(\"H2AV\", length(rep2res2))\n\nrep2res2$sig.eff<-as.numeric(as.character(rep2res2$sig.eff))\nrep2res2$sig.cpD2<-as.numeric(as.character(rep2res2$sig.cpD2))\n\np29INGct<-rep2res2\n\nggplot(rep2res2, aes(x=Names,y=sig.cpD2, fill=Pop))+geom_bar(stat=\"identity\")\n\nexpr<-function(x,y){\n  newVar<-(1+x)^y\n  1/newVar\n}\n\nrep2res2$expression<-expr(rep2res2$sig.eff, rep2res2$sig.cpD2)\n\nshapiro.test(rep2res2$sig.eff)\n\nrep2res2<-rep2res2[which(rep2res2$Pop!=c(\"NT\")),]\n\n\nggplot(rep2res2, aes(x=Names,y=expression, fill=Pop))+geom_bar(stat=\"identity\")\nggplot(rep2res2, aes(x=Treat, y=expression, fill=Pop))+geom_boxplot()\n\n\nfit<-aov(expression~Pop+Treat+Pop:Treat,data=rep2res2)\nfit\nTukeyHSD(fit)\n\nfit2<-aov(expression~Pop, data=rep2res2[Treat==\"C\"])\nfit2\nTukeyHSD(fit2)\n\nfit3<-aov(expression~Pop, data=rep2res2[Treat==\"T\"])\nfit3\nTukeyHSD(fit3)\n\nfit4<-t.test(expression~Treat, data=rep2res2[Pop==\"H\"])\nfit4\n\nfit5<-t.test(expression~Treat, data=rep2res2[Pop==\"N\"])\nfit5\n\nfit6<-t.test(expression~Treat, data=rep2res2[Pop==\"S\"])\nfit6\n\n\n",
+    "created" : 1437001864875.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "469130399",
+    "id" : "B4F6C327",
+    "lastKnownWriteTime" : 1439161654,
+    "path" : "~/GitHub/Resilience-Project/qPCR data/raw fluoro/statscrpt.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

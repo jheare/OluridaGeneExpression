@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1438712183572.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "6510EB18",
+    "lastKnownWriteTime" : 13229740524830817,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "Allct2",
+        "contentUrl" : "content?title=Allct2&file=557c8127d402420a8ad77f9621ee9939.htm",
+        "displayedObservations" : "48",
+        "displayedVariables" : 100,
+        "totalObservations" : "48",
+        "variables" : "162"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

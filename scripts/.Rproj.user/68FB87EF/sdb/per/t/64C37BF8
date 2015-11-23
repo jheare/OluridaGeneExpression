@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1438621918757.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "64C37BF8",
+    "lastKnownWriteTime" : 32370056118796380,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "ef1d2rep",
+        "contentUrl" : "content?title=ef1d2rep&file=f02e287a5e55498f833cd85d41ecfc94.htm",
+        "displayedObservations" : "48",
+        "displayedVariables" : 38,
+        "totalObservations" : "48",
+        "variables" : "41"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

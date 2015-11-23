@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1438711736815.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "436D5687",
+    "lastKnownWriteTime" : 13229740524830817,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "rep3",
+        "contentUrl" : "content?title=rep3&file=ffd23828e0c34b17a202115a3bc97dc2.htm",
+        "displayedObservations" : "40",
+        "displayedVariables" : 53,
+        "totalObservations" : "40",
+        "variables" : "49"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

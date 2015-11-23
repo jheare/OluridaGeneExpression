@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1438711811657.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "2D65E528",
+    "lastKnownWriteTime" : 13229740524830817,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "rep2res",
+        "contentUrl" : "content?title=rep2res&file=b8f816bd572e458daf5d195c547207a8.htm",
+        "displayedObservations" : "52",
+        "displayedVariables" : 38,
+        "totalObservations" : "52",
+        "variables" : "36"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
