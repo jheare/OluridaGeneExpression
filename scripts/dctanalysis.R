@@ -1,12 +1,29 @@
+========================
+#
+#UNCOMMENT the lines below if you do have the packages already installed
+#
+#install.packages("ggplot2")
+#install.packages("plyr")
+#install.packages("splitstackshape")
+
+
+=============================
+
+
 #Necessary Packages to manipulate data and plot values. 
 require(plyr)
 require(ggplot2)
 require(splitstackshape)
 
+#set working directory
+setwd("**your directory here**")
+
 #Read in mean Ct value table
-dCt<-read.csv("CTvalues83115.csv", header=T)
+dCt<-read.csv("./data/ct-values-2015.csv", header=T)
+
 #Split SAMPLE_ID column to create columns for population, treatment, and sample number
 dCt<-cSplit(dCt,"SAMPLE_ID", sep= "_", drop=F)
+
 #rename columns appropriately
 dCt<-rename(dCt,replace=c("SAMPLE_ID_1"="Pop","SAMPLE_ID_2"="Treat","SAMPLE_ID_3"="Sample"))
 
