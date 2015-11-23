@@ -28,3 +28,9 @@ _ct-values-2014.csv_
 
 _dctanalysis.R_
 
+--- 
+**Files Contained in _genome_ directory**
+
+Olurida_PCRtargets.fa
+
+Olurida_ transcriptome_v3.zip
